@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'vehiculos.apps.VehiculosConfig',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': 'form_rortiz',
+        # 'USER': 'postgres',
+        # 'PASSWORD': 'rortiz',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
 }
 

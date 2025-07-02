@@ -1,0 +1,31 @@
+<h1>Listado de Vehículos</h1>
+
+<form method="get">
+    Buscar: <input type="text" name="q" value="{{ query }}">
+    Año: <input type="number" name="anio" value="{{ anio }}">
+    Precio desde: <input type="number" step="0.01" name="precio_min" value="{{ precio_min }}">
+    hasta: <input type="number" step="0.01" name="precio_max" value="{{ precio_max }}">
+    <button type="submit">Filtrar</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Marca</th><th>Modelo</th><th>Año</th><th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for v in vehiculos %}
+            <tr>
+                <td>{{ v.marca }}</td>
+                <td>{{ v.modelo }}</td>
+                <td>{{ v.anio }}</td>
+                <td>${{ v.precio }}</td>
+            </tr>
+        {% empty %}
+            <tr><td colspan="4">No hay vehículos.</td></tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'alta_vehiculo' %}">Agregar nuevo vehículo</a>
