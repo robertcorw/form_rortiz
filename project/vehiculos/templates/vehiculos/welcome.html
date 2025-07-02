@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1 class="mb-5">DESCUBRE TU<br>EXPERIENCIA CHEVROLET®</h1>
+    <a href="{% url 'alta_vehiculo' %}" class="btn btn-custom">INICIAR EXPERIENCIA<br><small>(Check-In)</small></a>
+    <!-- <a href="{% url 'lista_vehiculos' %}" class="btn btn-custom">TERMINAR VISITA<br><small>(Check-Out)</small></a> -->
+</div>
+{% endblock %}

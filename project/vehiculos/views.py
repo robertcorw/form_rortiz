@@ -1,7 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Vehiculo
 from .forms import VehiculoForm
 from django.db.models import Q
+
+def welcome(request):
+    return render(request, 'vehiculos/welcome.html')
 
 def alta_vehiculo(request):
     form = VehiculoForm(request.POST or None)
@@ -23,6 +26,8 @@ def lista_vehiculos(request):
         vehiculos = vehiculos.filter(
             Q(modelo__icontains=query) | Q(marca__icontains=query)
         )
+    else:
+        query = ''
 
     if anio:
         vehiculos = vehiculos.filter(anio=anio)
@@ -40,3 +45,9 @@ def lista_vehiculos(request):
         'precio_max': precio_max,
     }
     return render(request, 'vehiculos/lista_vehiculos.html', context)
+
+def eliminar_vehiculo(request, vehiculo_id):
+    vehiculo = get_object_or_404(Vehiculo, id=vehiculo_id)
+    vehiculo.activo = False
+    vehiculo.save()
+    return redirect('lista_vehiculos')

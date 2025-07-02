@@ -1,7 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Alta de Vehículo{% endblock %}
+
+{% block content %}
 <h1>Alta de Vehículo</h1>
-<form method="post">
+<form method="post" class="mx-auto mt-4" style="max-width: 500px;">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Guardar</button>
+    <button type="submit" class="btn btn-custom">Guardar</button>
 </form>
-<a href="{% url 'lista_vehiculos' %}">Ver lista</a>
+<br><br><br>
+<a href="{% url 'lista_vehiculos' %}" class="btn btn-secondary mt-3">Ver lista</a>
+{% endblock %}
